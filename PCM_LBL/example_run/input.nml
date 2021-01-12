@@ -1,0 +1,103 @@
+ &gen_params_nml
+ nt               = 300,
+ cp_heat          = 800.0,
+ rho_H_cp         = 5.0d7,
+ delta_t          = 3.0d6,
+ calc_sigma       = T,T,T,
+ kappa_gray       = 5.0d-3,
+ add_update_Tsurf = T,
+ relax_adiabat    = T/
+ 
+ # In gen_params_nml:
+ # ------------------
+ # nt: number of timesteps. Set to 1 for oneshot mode.
+ # cp_heat: specific heat capacity of atmosphere for heating rate [J/K/kg]
+ # rho_H_cp: surface layer rho*height*cp (default 50 m liquid H2O) [J/m2/K]
+ # delta_t: timestep [s]
+ # calc_sigma: do we recalculate cross-sections every time the model runs?
+ # kappa_gray is the gray mass absorption coefficient [m2/kg]
+ # it may be used by longwave or atmos_structure, depending on
+ # settings in those modules
+ # add_update_Tsurf: update surface temperature
+ # relax_adiabatic: relax to moist/dry adiabat where unstable
+ 
+ &temperature_k_grid_nml
+ dTlay      = 30.0/
+ 
+ # In temperature_k_grid_nml:
+ # ------------------
+ # dTlay: temperature spacing on cross-section grid for interpolation [K]
+ 
+ &longwave_nml
+ nu_lw1     = 1.0,
+ nu_lw2     = 2500.0/
+ 
+ # In longwave_nml:
+ # ------------------
+ # nu_lw1 is starting wavenumber [1/cm]
+ # nu_lw2 is final wavenumber [1/cm]
+ 
+ &shortwave_nml
+ nu_sw1       = 1.0,
+ nu_sw2       = 50000.0,
+ Asurf        = 0.2,
+ Fstel0       = 441.0, 
+ cosa0        = 0.666,
+ rayleigh_top = F /
+ 
+ # In shortwave_nml:
+ # ------------------
+ # nu_sw1 is starting wavenumber [1/cm]
+ # nu_sw2 is final wavenumber [1/cm]
+ # Asurf is surface albedo []
+ # Fstel0 is stellar flux [W/m2]
+ # cosa0 is the stellar zenith angle cosine []
+ # rayleigh_top: does all Rayleigh scattering occur at TOA?
+ 
+ &atmos_structure_nml
+ ps                = 1.0e5,
+ Ts                = 245.0,
+ ptop              = 1.0d0,
+ Tstra             = 170.0d0,
+ grav              = 3.72,
+ RH                = 0.8,
+ condense_CO2      = T,
+ use_atmos_profile = T,
+ pv_atmos_profile  = 1.0e6/
+ 
+ # In atmos_structure_nml:
+ # -----------------------
+ # ps is surface pressure [Pa]
+ # Ts is starting surface temperature [K]
+ # ptop is top-of-atmosphere pressure [Pa]
+ # Tstra is starting isothermal stratospheric temperature [K]
+ # grav is gravity [m/s/s]
+ # RH is relative humidity []
+ # condense_CO2 toggles CO2 condensation
+ # use_atmos_profile toggles the moist adiabat routine
+ # pv_atmos_profile sets the maximum allowed H2O partial 
+ # pressure at the surface in the moist adiabat routine
+ 
+ &composition_nml
+ ngas_check        = 3,
+ gas_name_MAX      =  'CO2','H2_','H2O',
+ gas_molarconc_MAX =  1.0, 0.0, -1 /
+ 
+ # In composition_nml:
+ # -------------------
+ # ngas_check is number of gases in atmosphere []
+ # gas_name_MAX is names of gases []
+ # gas_molarconc_MAX is gas molar concentration [mol/mol]
+ 
+ &crosssec_nml
+ deltanu_trunc = 500.0d0, 25.0d0, 25.0d0,
+ HITEMP        = F,
+ Sref_cutoff   = 1.0e-30 /
+ 
+ # In crosssec_nml:
+ # ----------------
+ # deltanu_trunc is truncation wavenumber for each spectral line [1/cm]
+ # HITEMP: do we use HITEMP database?
+ # Sref_cutoff is line strength cutoff (larger = faster, less accurate) [cm^-1 / cm^2 molecule^-1]
+
+ 
