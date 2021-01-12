@@ -1,4 +1,4 @@
-# mars_redox_2020
+# mars_redox_2021
 
 A collection of source code and scripts to reproduce the results of Wordsworth et al., 2021, Nature Geoscience.
 
