@@ -598,7 +598,7 @@ contains
     ! unless we have really variable major constituents in the atmosphere
 
     ! general variables
-    !real(8), parameter :: gamma = 0.5d0*sqrt(3.0d0) ! hemi-isotropic approximation
+    !real(8), parameter :: gamma = 0.5d0*sqrt(3.0d0) ! quadrature approximation
     real(8), parameter   :: gamma = 3.0d0/4.0d0       ! Eddington approximation
 
     real(8), intent(in)  :: ps         ! surface pressure [Pa]
