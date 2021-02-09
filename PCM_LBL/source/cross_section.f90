@@ -405,7 +405,7 @@ contains
        do iS = 1, nS
           sigma_temp = 0.0d0
           if(nu(iS)>0.0d0 .and. nu(iS)<500.0d0)then
-             call calculate_cia('N2_N2_',nu(iS),T,p,p*f_i(iGas_CO2),p*f_i(iGas_CO2),sigma_temp,.false.)
+             call calculate_cia('N2_N2_',nu(iS),T,p,p*f_i(iGas_N2),p*f_i(iGas_N2),sigma_temp,.false.)
           end if
           sigma_CIA(iS) = sigma_temp
        end do
