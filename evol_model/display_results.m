@@ -7,7 +7,7 @@
 close all
 clearvars -except run_type
 
-% save the data 
+% load the data 
 if(run_type==1)
     load mars_redox_data_Fig1
 elseif(run_type==2)
