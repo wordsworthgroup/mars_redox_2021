@@ -326,6 +326,7 @@ contains
 
        ! compute total layer optical depth
        ! note array flip [nS,nLay] ==> [nLay,nS]
+       ! also note g/mol == molecular mass in Daltons in denominator
        do iLay = 1, nLay
           dtau_lw(iLay,:) = dtau_lw(iLay,:) + 1.0d-4*sigma_t_i(:,iLay)*dp(ilay)/(grav*mu_avg(iLay)*mpr)
        end do
