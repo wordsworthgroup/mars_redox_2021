@@ -319,6 +319,7 @@ contains
           do iLay = 1, nLay
              ! sigma*f_i gives us cross-section per unit molecule of air.
              ! Hence to convert to dtau we need to use mu_avg(iLay), not mu_i.
+             ! note g/mol == molecular mass in Daltons in denominator
              dtau_sw(iLay,:,:) = dtau_sw(iLay,:,:) + &
                   1.0d-4*sigma_sw_ar(:,iLay,iGas,:)*f_i(iLay,iGas)*dp(ilay)/(grav*mu_avg(iLay)*mpr)
           end do
